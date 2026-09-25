@@ -2,6 +2,13 @@ import time
 
 palavras_sensiveis = ["religião", "etnia", "biometria", "diagnóstico"]
 
+def classificador(texto):
+    encontradas = []
+    for palavra in palavras_sensiveis:
+        if palavra in texto:
+            encontradas.append(palavra)
+    return encontradas
+
 print("Olá! Bem-vindo(a) ao Analisador de Dados!")
 time.sleep(1)
 print("\nEsta ferramenta analisa textos em busca de dados pessoais sensíveis conforme classificados pela Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2020).")
@@ -11,10 +18,7 @@ texto = input("Por favor, insira o texto para análise logo abaixo:\n").lower()
 print("\nObrigada! Estamos analisando...")
 time.sleep(2)
 
-encontradas = []
-for palavra in palavras_sensiveis:
-    if palavra in texto:
-        encontradas.append(palavra)
+encontradas = classificador(texto)
 
 if encontradas:
     print(f"\nEncontramos: {', '.join(encontradas)}")
