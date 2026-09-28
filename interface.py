@@ -7,7 +7,17 @@ def ao_clicar():
     encontradas = classificador(texto)
 
     if encontradas:
-        mensagem = f"⚠️ Encontramos: {', '.join(encontradas)}"
+        linhas = [f"⚠️ Encontramos: {', '.join(encontradas)}\n"]
+        for palavra in encontradas:
+            if palavra == "religião":
+                linhas.append("• Religião → crença religiosa é dado sensível pela LGPD (Art. 5º, II). Sua exposição pode gerar discriminação e viola a liberdade de consciência.")
+            if palavra == "etnia":
+                linhas.append("• Etnia → origem racial ou étnica é dado sensível pela LGPD (Art. 5º, II). Pode expor a pessoa a preconceito e tratamento discriminatório.")
+            if palavra == "biometria":
+                linhas.append("• Biometria → dado biométrico identifica a pessoa de forma única e irreversível. É sensível pela LGPD (Art. 5º, II) pois não pode ser alterado em caso de vazamento.")
+            if palavra == "diagnóstico":
+                linhas.append("• Diagnóstico → dado de saúde é sensível pela LGPD (Art. 5º, II). Pode impactar empregabilidade, seguros e gerar estigma social.")
+        mensagem = "\n".join(linhas)
     else:
         mensagem = "✅ Nenhum dado sensível encontrado!"
 
